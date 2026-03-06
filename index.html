@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Class Attendance</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Class Attendance</h1>
+
+<label>Date:</label>
+<input type="date" id="date">
+
+<h2>Students</h2>
+
+<div id="studentList"></div>
+
+<button onclick="submitAttendance()">Submit Attendance</button>
+
+<h2>Attendance History</h2>
+
+<table border="1">
+<thead>
+<tr>
+<th>Date</th>
+<th>Present</th>
+<th>Absent</th>
+</tr>
+</thead>
+
+<tbody id="history"></tbody>
+</table>
+
+<script src="script.js"></script>
+
+</body>
+</html>
