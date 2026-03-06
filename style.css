@@ -1,15 +1,26 @@
 body{
 font-family:Arial;
 background:#f4f6f9;
-padding:30px;
+padding:40px;
 }
 
 h1{
 color:#333;
 }
 
+#studentList{
+columns:2;
+margin-top:20px;
+}
+
+label{
+display:block;
+margin:5px;
+}
+
 button{
-padding:10px 20px;
+margin-top:20px;
+padding:12px 20px;
 background:#007bff;
 color:white;
 border:none;
@@ -22,10 +33,13 @@ background:#0056b3;
 }
 
 table{
-margin-top:20px;
+margin-top:30px;
 border-collapse:collapse;
+width:300px;
 }
 
 th,td{
 padding:10px;
+border:1px solid #ccc;
+text-align:center;
 }
