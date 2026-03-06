@@ -8,21 +8,15 @@ students=data
 loadStudents()
 })
 
-fetch("attendance.json")
-.then(res=>res.json())
-.then(data=>{
-attendance=data
-showHistory()
-})
-
 function loadStudents(){
 
 let container=document.getElementById("studentList")
-container.innerHTML=""
 
 students.forEach(student=>{
 
 let div=document.createElement("div")
+
+div.className="student"
 
 div.innerHTML=`
 <label>
@@ -43,24 +37,27 @@ let date=document.getElementById("date").value
 
 let checked=document.querySelectorAll("input[type=checkbox]:checked")
 
-let present=[]
+let presentRolls=[]
 
 checked.forEach(cb=>{
-present.push(cb.value)
+presentRolls.push(cb.value)
 })
 
-let presentCount=present.length
+let presentCount=presentRolls.length
 let absentCount=students.length-presentCount
+
+let absentStudents=students.filter(s=>!presentRolls.includes(s.roll))
 
 attendance[date]={
 present:presentCount,
-absent:absentCount,
-rolls:present
+absent:absentCount
 }
 
-alert("Attendance Recorded")
-
 showHistory()
+
+showAbsent(absentStudents)
+
+alert("Attendance Recorded")
 
 }
 
@@ -72,7 +69,7 @@ table.innerHTML=""
 
 for(let date in attendance){
 
-let row=`
+table.innerHTML+=`
 <tr>
 <td>${date}</td>
 <td>${attendance[date].present}</td>
@@ -80,8 +77,22 @@ let row=`
 </tr>
 `
 
-table.innerHTML+=row
+}
 
 }
+
+function showAbsent(list){
+
+let box=document.getElementById("absentList")
+
+box.innerHTML=""
+
+list.forEach(s=>{
+
+box.innerHTML+=`
+<div>${s.roll} - ${s.name}</div>
+`
+
+})
 
 }
