@@ -18,16 +18,21 @@ showHistory()
 function loadStudents(){
 
 let container=document.getElementById("studentList")
+container.innerHTML=""
 
-students.forEach(name=>{
+students.forEach(student=>{
+
 let div=document.createElement("div")
 
-div.innerHTML=`<label>
-<input type="checkbox" value="${name}">
-${name}
-</label>`
+div.innerHTML=`
+<label>
+<input type="checkbox" value="${student.roll}">
+${student.roll} - ${student.name}
+</label>
+`
 
 container.appendChild(div)
+
 })
 
 }
@@ -44,10 +49,13 @@ checked.forEach(cb=>{
 present.push(cb.value)
 })
 
+let presentCount=present.length
+let absentCount=students.length-presentCount
+
 attendance[date]={
-present:present.length,
-absent:students.length-present.length,
-names:present
+present:presentCount,
+absent:absentCount,
+rolls:present
 }
 
 alert("Attendance Recorded")
@@ -64,11 +72,13 @@ table.innerHTML=""
 
 for(let date in attendance){
 
-let row=`<tr>
+let row=`
+<tr>
 <td>${date}</td>
 <td>${attendance[date].present}</td>
 <td>${attendance[date].absent}</td>
-</tr>`
+</tr>
+`
 
 table.innerHTML+=row
 
