@@ -3,26 +3,28 @@
 
 <head>
 <title>Class Attendance</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<div class="container">
+
 <h1>Class Attendance</h1>
 
-<label>Select Date:</label>
+<label>Select Date</label>
 <input type="date" id="date">
 
-<h2>Students</h2>
+<h3>Students</h3>
 
 <div id="studentList"></div>
 
 <button onclick="submitAttendance()">Submit Attendance</button>
 
-<h2>Attendance History</h2>
+<h3>Attendance Summary</h3>
 
-<table border="1">
-
+<table>
 <thead>
 <tr>
 <th>Date</th>
@@ -35,8 +37,12 @@
 
 </table>
 
+<h3>Absent Students</h3>
+<div id="absentList"></div>
+
+</div>
+
 <script src="script.js"></script>
 
 </body>
-
 </html>
